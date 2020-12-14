@@ -1,0 +1,5 @@
+<% for i in 0..@solution.answer.split(' ').count - 1 %>
+  <div>
+    <%= 'x' + (i + 1).to_s + ' = ' + @solution.answer.split(' ')[i] %>
+  </div>
+<% end %>

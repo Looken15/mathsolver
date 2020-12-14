@@ -1,0 +1,14 @@
+<% @problems.each do |problem| %>
+  <div>
+    <%= 'Система № ' + problem.id.to_s %>
+    <%= link_to ' РЕШИТЬ', "/home/solve_problem/#{problem.id}" %>
+    <% for i in 0..problem.m - 1 %>
+      <div>
+        <% for j in 0..problem.n - 1 %>
+          <%= problem.matrix.split(' ')[j + problem.m * i] %>
+        <% end %>
+        <%= '| ' + problem.b.split(' ')[i] %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

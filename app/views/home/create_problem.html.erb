@@ -1,0 +1,10 @@
+<%= form_with url: '/home/create_problem', method: :post do |form| %>
+  <% @m.times do |i| %>
+    <div style="display: block">
+      <% @n.times do |j| %>
+        <%= number_field_tag :elasticity, nil, step: 1, name: "matrix[#{i}][#{j}]" %>
+      <% end %>
+    </div>
+  <% end %>
+  <%= form.submit "Create problem"%>
+<% end %>
