@@ -8,31 +8,36 @@ class HomeController < ApplicationController
 
   def solve_problem
     ex_sol = Solution.find_by_problem_id params[:id]
-    if !ex_sol.nil?
+    unless ex_sol.nil?
       @solution = ex_sol
-    else
-      problem = Problem.find_by_id params[:id]
-      coeffs = NMatrix.new([problem.m, problem.n],
-                           problem.matrix.split(' ').map { |s| s.to_i }, dtype: :float32)
-
-      rhs = NMatrix.new([problem.n, 1],
-                        problem.b.split(' ').map { |s| s.to_i }, dtype: :float32)
-      solution = Solution.new
-      solution.problem_id = params[:id]
-      solution.answer = coeffs.solve(rhs).to_a.map { |a| a.first.round }.join(' ')
-      solution.save
-      Rails.logger.info solution.errors.full_messages
-      @solution = solution
-    end
+      return render 'solve_problem'
+    end  
+    
+     problem = Problem.find_by_id params[:id]
+     problem.solve  
+     Rails.logger.info problem.solution.errors.full_messages
+     @solution = problem.solution
   end
 
-  def create_problem
+  def new
+    @error = params[:error]
     @n = 4
     @m = 3
   end
 
   def create
-    render json: params[:matrix]
+    problem = Problem.create(problem_params)
+    if problem.valid?
+        return redirect_to action: 'index' 
+    else
+        return redirect_to action: 'new', error: problem.errors.full_messages.join("\n")
+    end
+  end
+  
+  private
+  
+  def problem_params
+      params.permit(:matrix, :n, :m, :b)  
   end
 
 end
