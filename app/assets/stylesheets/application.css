@@ -13,3 +13,204 @@
  *= require_tree .
  *= require_self
  */
+
+@import url(fonts/robotomono.css);
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Mono';
+    margin: 0;
+    background: #0b0b0b;
+}
+
+h1 {
+    color: #ffffff;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#start-block {
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+.block {
+    background: #60a839;
+}
+
+.container {
+    padding: 0 15px;
+}
+
+.logo {
+    margin: -10px 0 30px;
+}
+
+.logo img {
+    max-height: 80px;
+}
+
+.methods a {
+    color: #415fee;
+    font-size: 20px;
+    margin: 20px;
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid;
+    transition: .3s;
+}
+
+.methods a:hover {
+    color: #8835cc;
+    transition: .1s;
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    display: none;
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.matrix input {
+    background: #1a1a1b;
+    border: 1px solid #415fee4d;
+    height: 36px;
+    max-width: 100px;
+    margin: 6px 0;
+    outline: 0;
+    text-align: center;
+    font-family: 'Roboto Mono';
+    color: #fff;
+    font-weight: 500;
+    font-size: 20px;
+    transition: .2s;
+}
+
+.matrix input:focus {
+    color: #8835cc;
+    border: 1px solid;
+}
+
+input.type2 {
+    margin-left: 10px;
+    background: #2b2b43;
+    color: #415fee;
+}
+
+.three:before {
+    content: '(';
+    position: absolute;
+    top: -25px;
+    left: -80px;
+    line-height: 1;
+    font-size: 180px;
+    color: #414167;
+    font-weight: 100;
+}
+
+.three:after {
+    content: ')';
+    position: absolute;
+    top: -25px;
+    right: -80px;
+    line-height: 1;
+    font-size: 180px;
+    color: #414167;
+    font-weight: 100;
+}
+
+.four:before {
+    content: '(';
+    position: absolute;
+    top: -25px;
+    left: -100px;
+    line-height: 1;
+    font-size: 225px;
+    color: #414167;
+    font-weight: 100;
+}
+
+.four:after {
+    content: ')';
+    position: absolute;
+    top: -25px;
+    right: -100px;
+    line-height: 1;
+    font-size: 225px;
+    color: #414167;
+    font-weight: 100;
+}
+
+.three {
+    position: relative;
+    width: 440px;
+    margin: 50px auto 0;
+}
+
+.four {
+    position: relative;
+    width: 550px;
+    margin: 50px auto 0;
+}
+
+.matrix p {
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 20px;
+    margin: 50px 0 -30px;
+    display: block;
+}
+
+.matrix {
+    text-align: center;
+}
+
+.btns {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+button[type='reset'] {
+    background: #3a3a3f;
+    color: #ddd;
+}
+
+.btns button {
+    border: 0;
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-family: 'Roboto Mono';
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    outline: 0 !important;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.btns button:hover {
+    transform: translateY(-5px);
+}
+
+button[type='submit'] {
+    background: #252e5b;
+    color: #ddd;
+}

@@ -13,22 +13,23 @@ class HomeController < ApplicationController
     else
       problem = Problem.find_by_id params[:id]
       coeffs = NMatrix.new([problem.m, problem.n],
-                           problem.matrix.split(' ').map { |s| s.to_i }, dtype: :float32)
+                           problem.matrix.split(' ').map { |s| s.to_f }, dtype: :float32)
 
       rhs = NMatrix.new([problem.n, 1],
-                        problem.b.split(' ').map { |s| s.to_i }, dtype: :float32)
+                        problem.b.split(' ').map { |s| s.to_f }, dtype: :float32)
       solution = Solution.new
       solution.problem_id = params[:id]
-      solution.answer = coeffs.solve(rhs).to_a.map { |a| a.first.round }.join(' ')
+      solution.answer = coeffs.solve(rhs).to_a.map { |a| a.first }.join(' ')
       solution.save
       Rails.logger.info solution.errors.full_messages
       @solution = solution
     end
   end
 
-  def create_problem
+  def method_kramer
     @n = 4
     @m = 3
+
   end
 
   def create
